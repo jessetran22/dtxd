@@ -12,4 +12,9 @@ export default defineConfig({
       failOnError: false,
     }),
   ],
+  resolve: {
+    alias: {
+      '@': 'src/',
+    },
+  },
 })
