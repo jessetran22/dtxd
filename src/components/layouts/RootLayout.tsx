@@ -83,7 +83,11 @@ export default function Root({ children }: { children: JSX.Element }) {
                       as={NavLink}
                       to={item.href}
                       icon={item.icon}
-                      className={`${path === item.href ? 'shadow-lg bg-gray-100' : ''}  `}
+                      className={`${
+                        path === item.href
+                          ? 'shadow-lg shadow-indigo-500/50 bg-indigo-50 '
+                          : 'shadow-sm shadow-gray-500/50'
+                      }`}
                     >
                       {item.title}
                       {path === item.href && (
