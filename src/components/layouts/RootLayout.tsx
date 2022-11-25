@@ -1,9 +1,13 @@
 import { Sidebar } from 'flowbite-react'
+import { NavLink, useLocation, useParams } from 'react-router-dom'
+import type { Location, Params } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
+import { HiOutlineDocumentSearch } from 'react-icons/hi'
+import { FaHome, FaCalculator, FaSearchengin, FaMoneyBillAlt } from 'react-icons/fa'
+import { IoConstructSharp } from 'react-icons/io5'
+import { SlCalculator } from 'react-icons/sl'
 import MyFooter from './Footer'
 import NavBar from './NavBar'
-import { Link, useLocation, useParams } from 'react-router-dom'
-import type { Location, Params } from 'react-router-dom'
-import { useEffect } from 'react'
 
 const getRoutePath = (location: Location, params: Params): string => {
   const { pathname } = location
@@ -26,40 +30,41 @@ export default function Root({ children }: { children: JSX.Element }) {
   const params = useParams()
   const path = getRoutePath(location, params)
 
-  useEffect(() => {
-    console.log(location)
-    console.log(params)
-    console.log(path)
-  }, [])
-
   const sidebarItems = [
     {
       title: 'Trang chủ',
       href: '/',
+      icon: FaHome,
     },
     {
       title: 'Dự toán nhà phố',
       href: '/estimate',
+      icon: FaCalculator,
     },
     {
       title: 'Tra khối lượng thép',
       href: '/steel-volume',
+      icon: FaSearchengin,
     },
     {
       title: 'Tra định mức xây dựng',
       href: '/construction-norms',
+      icon: IoConstructSharp,
     },
     {
       title: 'Tính CP QLDA, CP tư vấn',
       href: '/project-costs',
+      icon: SlCalculator,
     },
     {
       title: 'Văn bản về CP đầu tư XD',
       href: '/construction-docs',
+      icon: HiOutlineDocumentSearch,
     },
     {
       title: 'Giá vật liệu, nhân công',
-      href: '/materia-price',
+      href: '/material-price',
+      icon: FaMoneyBillAlt,
     },
   ]
   return (
@@ -75,17 +80,20 @@ export default function Root({ children }: { children: JSX.Element }) {
                     <Sidebar.Item
                       key={index}
                       href={item.href}
-                      as={Link}
+                      as={NavLink}
                       to={item.href}
-                      className={`${path === item.href ? 'shadow-lg' : ''}  `}
+                      icon={item.icon}
+                      className={`${path === item.href ? 'shadow-lg bg-gray-100' : ''}  `}
                     >
                       {item.title}
+                      {path === item.href && (
+                        <Helmet>
+                          <title>{item.title}</title>
+                          {/* <link rel="canonical" href="https://www.tacobell.com/" /> */}
+                        </Helmet>
+                      )}
                     </Sidebar.Item>
                   ))}
-
-                  {/* <Sidebar.Collapse icon={HiShoppingBag} label="E-commerce">
-                    <Sidebar.Item href="#">Products</Sidebar.Item>
-                  </Sidebar.Collapse> */}
                 </Sidebar.ItemGroup>
               </Sidebar.Items>
             </Sidebar>

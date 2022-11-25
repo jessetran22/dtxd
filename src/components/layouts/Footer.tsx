@@ -21,7 +21,7 @@ const MyFooter = () => {
         </div> */}
         {/* <Footer.Divider /> */}
         <div className="w-full sm:flex sm:items-center sm:justify-between">
-          <Footer.Brand href="https://flowbite.com" src="/vite.svg" alt="Vite Logo" name="Tất Trần" />
+          <Footer.Brand href="https://tattran.com" src="/vite.svg" alt="Tat Tran" name="Tất Trần" />
           <Footer.Copyright href="https://tattran.com/" by="Tất Trần" year={new Date().getFullYear()} />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon href="https://www.facebook.com/TatTran22/" icon={BsFacebook} />
