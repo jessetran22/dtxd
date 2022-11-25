@@ -1,5 +1,5 @@
 import Root from '@/components/layouts/RootLayout'
-function MateriaPrice() {
+function MaterialPrice() {
   return (
     <Root>
       <div>Giá vật liệu, nhân công</div>
@@ -7,4 +7,4 @@ function MateriaPrice() {
   )
 }
 
-export default MateriaPrice
+export default MaterialPrice
